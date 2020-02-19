@@ -1,0 +1,27 @@
+{
+    "name": "thundersense",
+    "version": "0.0.1",
+    "description": "BLE Thunderboard Sense Readout",
+    "main": "dist/index.js",
+    "author": "Onne Gorter",
+    "license": "MIT",
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "nodemon -i dist -e ts -x 'tsc && node dist/index.js'"
+    },
+    "devDependencies": {
+        "@types/debug": "^4",
+        "@types/node": "^13",
+        "typescript": "^3.7"
+    },
+    "dependencies": {
+        "@abandonware/noble": "^1.9.2-5",
+        "debug": "^4"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "useTabs": false,
+        "semi": false,
+        "printWidth": 120
+    }
+}
