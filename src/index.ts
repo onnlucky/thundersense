@@ -131,14 +131,9 @@ class ThunderSense {
 console.log("scanning...")
 noble.startScanning([], true)
 noble.on("discover", peripheral => {
-    const address = peripheral.address
-    if (!address) {
-        // console.log("ignoring device without address")
-        return
-    }
-
+    const address = peripheral.uuid
     const localName = peripheral.advertisement.localName
-    if (!(localName && localName.startsWith("Thunder Sense"))) {
+    if (!(address && localName && localName.startsWith("Thunder Sense"))) {
         // console.log("ignoring", address, localName)
         return
     }
