@@ -10,7 +10,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
 
-        "noImplicitAny": true,
+        // "noImplicitAny": true,
         "strictNullChecks": true,
         "noImplicitThis": true,
         "sourceMap": true,

@@ -1,0 +1,18 @@
+[Unit]
+Description=Thundersense House Sensors to Home Assistant
+After=network.target
+
+[Service]
+Restart=always
+RestartSec=1
+RuntimeMaxSec=1h
+ExecStartPre=+hciconfig hci0 down
+ExecStartPre=+rm -rf /var/lib/bluetooth/*
+ExecStartPre=+hciconfig hci0 up
+User=homeassistant
+WorkingDirectory=/srv/homeassistant/thundersense-to-homeassistant/
+Environment=NODE_ENV=production
+ExecStart=node index.js
+
+[Install]
+WantedBy=multi-user.target
