@@ -1,11 +1,11 @@
-dist/index.js: src/index.ts
+dist/thundersense.js: src/thundersense.ts
 	rm -rf dist/*
 	tsc
 
 dev:
 	yarn dev
 
-install: dist/index.js
+install: dist/thundersense.js
 	sudo -u homeassistant rm -rf /srv/homeassistant/thundersense-to-homeassistant
 	sudo -u homeassistant mkdir -p /srv/homeassistant/thundersense-to-homeassistant
 	sudo -u homeassistant cp dist/* /srv/homeassistant/thundersense-to-homeassistant/

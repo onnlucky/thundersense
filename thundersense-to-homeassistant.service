@@ -12,7 +12,7 @@ ExecStartPre=+hciconfig hci0 up
 User=homeassistant
 WorkingDirectory=/srv/homeassistant/thundersense-to-homeassistant/
 Environment=NODE_ENV=production
-ExecStart=node index.js
+ExecStart=node thundersense.js
 
 [Install]
 WantedBy=multi-user.target
