@@ -5,7 +5,7 @@ import { default as HomeAssistant } from "homeassistant"
 
 let config = {}
 try {
-    const file = path.join(process.env.HOME || "/home/homeassistant", ".homeassistant", "thundersense-to-homeassistant.json")
+    const file = path.join(process.env.HOME || "/home/homeassistant", "thundersense-to-homeassistant.config.json")
     config = JSON.parse(fs.readFileSync(file, {encoding: "utf8"}))
 } catch (e) {
     console.error("failed to read config:", e)

@@ -6,13 +6,16 @@ After=network.target
 Restart=always
 RestartSec=1
 RuntimeMaxSec=1h
-ExecStartPre=+hciconfig hci0 down
+# stop all bluetooth devices, clear their caches, and start them again
+# crummy workaround for unstable bluetooth hardware and/or drivers
+ExecStartPre=+sh -c "hcitool dev | sed -En 's/.*(hci[0-9]+).*/\\1 down/p' | xargs hciconfig"
 ExecStartPre=+rm -rf /var/lib/bluetooth/*
-ExecStartPre=+hciconfig hci0 up
+ExecStartPre=+sh -c "hciconfig | sed -En 's/(hci[0-9]+).*/\\1 up/p' | xargs hciconfig"
 User=homeassistant
 WorkingDirectory=/srv/homeassistant/thundersense-to-homeassistant/
 Environment=NODE_ENV=production
 ExecStart=node thundersense.js
+SyslogIdentifier=thundersense
 
 [Install]
 WantedBy=multi-user.target
