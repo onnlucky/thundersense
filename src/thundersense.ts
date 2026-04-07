@@ -187,7 +187,7 @@ class ThunderSense {
                 if (!attributes) continue
 
                 const sensor = "thundersense_" + this.address + "_" + name
-                console.log(sensor, "read", state)
+                //console.log(sensor, "read", state)
                 if (process.env.NODE_ENV !== "production") continue
                 await hass.states.update("sensor", sensor, { state, attributes })
             }
@@ -195,7 +195,7 @@ class ThunderSense {
             console.error(this.address, "error in readAll:", e)
         } finally {
             const readingStarted = (Date.now() - this.readStartTime) / 1000
-            console.log(this.address, "readAll took:", readingStarted)
+            //console.log(this.address, "readAll took:", readingStarted)
             this.readStartTime = 0
         }
     }
